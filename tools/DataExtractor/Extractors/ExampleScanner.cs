@@ -25,13 +25,14 @@ public static class ExampleScanner
             var fileName = Path.GetFileName(filePath);
             var baseName = GetBaseName(fileName);
 
-            if (!groups.ContainsKey(baseName))
+            if (!groups.TryGetValue(baseName, out var fileList))
             {
-                groups[baseName] = new List<CodeFileInfo>();
+                fileList = new List<CodeFileInfo>();
+                groups[baseName] = fileList;
             }
 
             var code = File.ReadAllText(filePath);
-            groups[baseName].Add(new CodeFileInfo
+            fileList.Add(new CodeFileInfo
             {
                 Code = code,
                 Name = fileName,
@@ -55,7 +56,7 @@ public static class ExampleScanner
     /// "CustomCSS.css" → "CustomCSS"
     /// "DataGridTypical_Helper.razor" → "DataGridTypical"
     /// </summary>
-    private static string GetBaseName(string fileName)
+    public static string GetBaseName(string fileName)
     {
         // Strip all extensions: .razor.cs → strip .cs then .razor
         var name = fileName;

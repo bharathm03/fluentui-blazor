@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e:*)",
+      "Bash(python:*)",
+      "Bash(dotnet script:*)",
+      "Bash(node compare.js:*)",
+      "Bash(python3:*)"
+    ]
+  }
+}
