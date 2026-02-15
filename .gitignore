@@ -413,3 +413,5 @@ Microsoft.Fast.Components.FluentUI.xml
 /tests/TemplateValidation/**/Data/*
 /spelling.dic
 
+# DataExtractor generated output
+/tools/DataExtractor/output/
